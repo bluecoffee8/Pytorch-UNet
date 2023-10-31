@@ -30,6 +30,7 @@ def unique_mask_values(idx, mask_dir, mask_suffix):
         return np.unique(mask)
     elif mask.ndim == 3:
         mask = mask.reshape(-1, mask.shape[-1])
+        mask = (mask > 128).astype(int) * 255
         return np.unique(mask, axis=0)
     else:
         raise ValueError(f'Loaded masks should have 2 or 3 dimensions, found {mask.ndim}')
@@ -70,6 +71,7 @@ class BasicDataset(Dataset):
         img = np.asarray(pil_img)
 
         if is_mask:
+            img = ((img > 128).astype(int) * 255)
             mask = np.zeros((newH, newW), dtype=np.int64)
             for i, v in enumerate(mask_values):
                 if img.ndim == 2:

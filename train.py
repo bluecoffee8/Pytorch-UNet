@@ -19,9 +19,9 @@ from unet import UNet
 from utils.data_loading import BasicDataset, CarvanaDataset
 from utils.dice_score import dice_loss
 
-dir_img = Path('./data/imgs/')
-dir_mask = Path('./data/masks/')
-dir_checkpoint = Path('./checkpoints/')
+dir_img = Path('../data/imgs/')
+dir_mask = Path('../data/masks/')
+dir_checkpoint = Path('../checkpoints/checkpoint_1/')
 
 
 def train_model(
@@ -40,7 +40,8 @@ def train_model(
 ):
     # 1. Create dataset
     try:
-        dataset = CarvanaDataset(dir_img, dir_mask, img_scale)
+        dataset = BasicDataset(dir_img, dir_mask, img_scale)
+        # dataset = CarvanaDataset(dir_img, dir_mask, img_scale)
     except (AssertionError, RuntimeError, IndexError):
         dataset = BasicDataset(dir_img, dir_mask, img_scale)
 
