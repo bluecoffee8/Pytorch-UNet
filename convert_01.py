@@ -28,3 +28,6 @@ import numpy as np
 # mask_file = mask_files[0]
 # img = np.asarray(Image.open(mask_file))
 # print(np.unique(img))
+
+z = glob.glob('../kvasir_seg/imgs/*.jpg')
+print(z)
