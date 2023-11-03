@@ -8,4 +8,4 @@
 module load gcc/9.2.0
 module load cuda/11.7
 
-python ../test.py --model="../checkpoints/checkpoint_default/checkpoint_epoch3.pth"
+python test.py --model="checkpoints/checkpoint_default/checkpoint_epoch3.pth"
